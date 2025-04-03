@@ -13,6 +13,7 @@ languages:
 - typescript
 - javascript
 - node
+- csharp
 - bicep
 - azdeveloper
 ---
