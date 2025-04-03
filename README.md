@@ -50,27 +50,22 @@ An Azure Storage Emulator is needed for this particular sample because we will s
 
 ## Run your MCP Server locally from the terminal
 
-1. Navigate to the typescript folder
-   ```shell
-   cd typescript
-   ```
-
-2. Install required extensions
+1. Install required extensions
    ```shell
    func extensions install
    ```
 
-3. Install dependencies
+1. Install dependencies
    ```shell
    npm install
    ```
 
-4. Build the project
+1. Build the project
    ```shell
    npm run build
    ```
 
-5. Start the Functions host locally:
+1. Start the Functions host locally:
    ```shell
    func start
    ```
