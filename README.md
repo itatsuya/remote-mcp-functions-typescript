@@ -27,6 +27,11 @@ If you're looking for this sample in more languages check out the [.NET/C#](http
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=836901178)
 
+
+Below is the architecture diagram for the Remote MCP Server using Azure Functions:
+
+![Architecture Diagram](architecture-diagram.png)
+
 ## Prerequisites
 
 + [Node.js](https://nodejs.org/en/download/) version 18 or higher
