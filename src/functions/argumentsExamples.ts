@@ -2,12 +2,9 @@ import { z } from "zod";
 import { app, InvocationContext } from "@azure/functions";
 
 
-export async function mcpToolTriggerWithArguments(_message: unknown, context: InvocationContext): Promise<string> {
+export async function mcpToolTriggerWithArguments(_toolArguments: unknown, context: InvocationContext): Promise<string> {
     context.log('MCP Server Trigger Test with Arguments');
     const mcptoolargs = context.triggerMetadata.mcptoolargs as { latitude?: number; longitude?: number };
-    console.log("Latitude: ", mcptoolargs?.latitude);
-    console.log("Latitude: ", mcptoolargs?.longitude);
-    console.log("MCP Server Trigger with arguments: ", context.triggerMetadata.mcptoolargs);
     return `Returning latitude: ${mcptoolargs.latitude}, longitude: ${mcptoolargs.longitude}`;
 }
 
@@ -29,7 +26,7 @@ app.mcpTool('mcpToolTriggerWithArguments', {
     handler: mcpToolTriggerWithArguments
 });
 
-export async function mcpToolTriggerWithZod(_message: unknown, context: InvocationContext): Promise<string> {
+export async function mcpToolTriggerWithZod(_toolArguments: unknown, context: InvocationContext): Promise<string> {
     context.log('MCP Server Trigger Test with Arguments');
 
     // Retrieve mcptool arguments from trigger metadata
@@ -39,10 +36,6 @@ export async function mcpToolTriggerWithZod(_message: unknown, context: Invocati
         context.log('No mcptool arguments found in trigger metadata');
         return "No arguments provided";
     }
-
-    console.log("Latitude: ", mcptoolargs.latitude);
-    console.log("Longitude: ", mcptoolargs.longitude);
-    console.log("MCP Server Trigger with arguments: ", context.triggerMetadata.mcptoolargs);
 
     return `Returning latitude: ${mcptoolargs.latitude}, longitude: ${mcptoolargs.longitude}`;
 }
