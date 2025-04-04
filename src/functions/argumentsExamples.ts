@@ -29,7 +29,7 @@ app.mcpTool('mcpToolTriggerWithArguments', {
     handler: mcpToolTriggerWithArguments
 });
 
-export async function mcpServerTriggerZodSupport(_message: unknown, context: InvocationContext): Promise<string> {
+export async function mcpToolTriggerWithZod(_message: unknown, context: InvocationContext): Promise<string> {
     context.log('MCP Server Trigger Test with Arguments');
 
     // Retrieve mcptool arguments from trigger metadata
@@ -47,12 +47,12 @@ export async function mcpServerTriggerZodSupport(_message: unknown, context: Inv
     return `Returning latitude: ${mcptoolargs.latitude}, longitude: ${mcptoolargs.longitude}`;
 }
 
-app.mcpTool('mcpServerTriggerZodSupport', {
-    toolName: 'mcpServerTriggerZodSupport',
+app.mcpTool('mcpToolTriggerWithZod', {
+    toolName: 'mcpToolTriggerWithZod',
     description: 'Mcp Tool with Zod Validation Example',
     toolProperties: {
         latitude: z.number().describe("Latitude of the location"),
         longitude: z.number().describe("Longitude of the location"),
     },
-    handler: mcpServerTriggerZodSupport
+    handler: mcpToolTriggerWithZod
 });
