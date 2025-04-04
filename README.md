@@ -5,7 +5,7 @@ description: Run a remote MCP server on Azure functions.
 languages:
 - typescript
 - javascript
-- node
+- nodejs
 - bicep
 - azdeveloper
 products:
