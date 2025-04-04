@@ -278,7 +278,15 @@ app.mcpTool('savesnippet', {
     extraOutputs: [blobOutputBinding],
     handler: saveSnippet
 });
+```
 
+Note that the `host.json` file also includes a reference to the experimental bundle, which is required for apps using this feature:
+
+```json
+"extensionBundle": {
+  "id": "Microsoft.Azure.Functions.ExtensionBundle.Experimental",
+  "version": "[4.*, 5.0.0)"
+}
 ```
 
 ## Next Steps
