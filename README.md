@@ -51,11 +51,6 @@ An Azure Storage Emulator is needed for this particular sample because we will s
 
 ## Run your MCP Server locally from the terminal
 
-1. Install required extensions
-   ```shell
-   func extensions install
-   ```
-
 1. Install dependencies
    ```shell
    npm install
