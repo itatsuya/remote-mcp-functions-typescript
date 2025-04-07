@@ -91,7 +91,7 @@ module blobRoleAssignmentApi 'app/storage-Access.bicep' = {
   params: {
     storageAccountName: storage.outputs.name
     roleDefinitionID: StorageBlobDataOwner
-    principalID: apiUserAssignedIdentity.outputs.identityPrincipalId
+    principalID: processorUserAssignedIdentity.outputs.identityPrincipalId
   }
 }
 
@@ -102,7 +102,7 @@ module queueRoleAssignmentApi 'app/storage-Access.bicep' = {
   params: {
     storageAccountName: storage.outputs.name
     roleDefinitionID: StorageQueueDataContributor
-    principalID: apiUserAssignedIdentity.outputs.identityPrincipalId
+    principalID: processorUserAssignedIdentity.outputs.identityPrincipalId
   }
 }
 
