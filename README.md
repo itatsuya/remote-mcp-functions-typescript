@@ -41,6 +41,7 @@ Below is the architecture diagram for the Remote MCP Server using Azure Function
 + To use Visual Studio Code to run and debug locally:
   + [Visual Studio Code](https://code.visualstudio.com/)
   + [Azure Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
++ [Docker](https://www.docker.com/) to run Azurite, the Azure Storage Emulator (optional)
 
 ## Prepare your local environment
 
