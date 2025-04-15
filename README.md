@@ -83,7 +83,12 @@ An Azure Storage Emulator is needed for this particular sample because we will s
     ```shell
     http://0.0.0.0:7071/runtime/webhooks/mcp/sse
     ```
-1. **List MCP Servers** from command palette and start the server
+
+1. Select **HTTP (Server-Sent-Events)** for the type of MCP server to add.
+1. Enter the URL to your running function app's SSE endpoint
+1. Enter the server ID. (This can be any name you want)
+1. Choose if you want to run this in your User settings (available to all apps for you) or to your Workspace settings (available to this app, only)
+1. **List MCP Servers** from command palette and start the server. The previous step may have already started your local server. If so, you can skip this step.
 1. In Copilot chat agent mode enter a prompt to trigger the tool, e.g., select some code and enter this prompt
 
     ```plaintext
@@ -99,7 +104,7 @@ An Azure Storage Emulator is needed for this particular sample because we will s
     ```
 1. When prompted to run the tool, consent by clicking **Continue**
 
-1. When you're done, press Ctrl+C in the terminal window to stop the `func.exe` host process.
+1. When you're done, press Ctrl+C in the terminal window to stop the `func.exe` host process, and **List MCP Servers** from command palette and stop the local server.
 
 ### MCP Inspector
 
@@ -108,6 +113,12 @@ An Azure Storage Emulator is needed for this particular sample because we will s
     ```shell
     npx @modelcontextprotocol/inspector node build/index.js
     ```
+    
+1. If you stopped your function app previously, start the Functions host locally:
+
+   ```shell
+   func start
+   ```
 
 1. CTRL click to load the MCP Inspector web app from the URL displayed by the app (e.g. http://0.0.0.0:5173/#resources)
 1. Set the transport type to `SSE` 
@@ -117,7 +128,15 @@ An Azure Storage Emulator is needed for this particular sample because we will s
     ```
 1. **List Tools**.  Click on a tool and **Run Tool**.  
 
+1. When you're done, press Ctrl+C in the terminal window to stop the `func.exe` host process, and press Ctrl+C in the terminal window to stop the `@modelcontextprotocol/inspector` host process.
+
 ## Deploy to Azure for Remote MCP
+
+Optionally, you can opt-in to a VNet being used in the sample. (If you choose this, do this before `azd up`)
+
+```bash
+azd env set VNET_ENABLED true
+```
 
 Run this [azd](https://aka.ms/azd) command to provision the function app, with any required Azure resources, and deploy your code:
 
@@ -125,13 +144,7 @@ Run this [azd](https://aka.ms/azd) command to provision the function app, with a
 azd up
 ```
 
-You can opt-in to a VNet being used in the sample. To do so, do this before `azd up`
-
-```bash
-azd env set VNET_ENABLED true
-```
-
-Additionally, [API Management]() can be used for improved security and policies over your MCP Server, and [App Service built-in authentication](https://learn.microsoft.com/en-us/azure/app-service/overview-authentication-authorization) can be used to set up your favorite OAuth provider including Entra.  
+> **Note** [API Management]() can be used for improved security and policies over your MCP Server, and [App Service built-in authentication](https://learn.microsoft.com/en-us/azure/app-service/overview-authentication-authorization) can be used to set up your favorite OAuth provider including Entra.  
 
 ## Connect to your *remote* MCP server function app from a client
 
@@ -144,7 +157,7 @@ https://<funcappname>.azurewebsites.net/runtime/webhooks/mcp/sse?code=<your-mcp-
 ```
 
 ### Connect to remote MCP server in VS Code - GitHub Copilot
-For GitHub Copilot within VS Code, you should instead set the key as the `x-functions-key` header in `mcp.json`, and you would just use `https://<funcappname>.azurewebsites.net/runtime/webhooks/mcp/sse` for the URL. The following example uses an input and will prompt you to provide the key when you start the server from VS Code.  Note [mcp.json]() has already been included in this repo and will be picked up by VS Code.  Click Start on the server to be prompted for values including `functionapp-name` (in your /.azure/*/.env file) and `functions-mcp-extension-system-key` which can be obtained from CLI command above or API Keys in the portal for the Function App.  
+For GitHub Copilot within VS Code, you should set the key as the `x-functions-key` header in `mcp.json`, and you would use `https://<funcappname>.azurewebsites.net/runtime/webhooks/mcp/sse` for the URL. The following example is from the `mcp.json` file included in this repository and uses an input to prompt you to provide the key when you start the server from VS Code.  Your `mcp.json` file looks like this:
 
 ```json
 {
@@ -176,6 +189,26 @@ For GitHub Copilot within VS Code, you should instead set the key as the `x-func
     }
 }
 ```
+
+1. Click Start on the server `remote-mcp-function`, inside the `mcp.json` file:
+
+1. Enter the name of the function app that you created in the Azure Portal, when prompted by VS Code.
+
+1. Enter the `Azure Functions MCP Extension System Key` into the prompt. You can copy this from the Azure portal for your function app by going to the Functions menu item, then App Keys, and copying the `mcp_extension` key from the System Keys.
+
+1. In Copilot chat agent mode enter a prompt to trigger the tool, e.g., select some code and enter this prompt
+
+    ```plaintext
+    Say Hello
+    ```
+
+    ```plaintext
+    Save this snippet as snippet1 
+    ```
+
+    ```plaintext
+    Retrieve snippet1 and apply to newFile.ts
+    ```
 
 ## Redeploy your code
 
