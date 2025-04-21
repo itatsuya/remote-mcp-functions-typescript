@@ -36,7 +36,7 @@ Below is the architecture diagram for the Remote MCP Server using Azure Function
 ## Prerequisites
 
 + [Node.js](https://nodejs.org/en/download/) version 18 or higher
-+ [Azure Functions Core Tools](https://learn.microsoft.com/azure/azure-functions/functions-run-local?pivots=programming-language-javascript#install-the-azure-functions-core-tools)
++ [Azure Functions Core Tools](https://learn.microsoft.com/azure/azure-functions/functions-run-local?pivots=programming-language-javascript#install-the-azure-functions-core-tools) >= `4.0.7030`
 + [Azure Developer CLI](https://aka.ms/azd)
 + To use Visual Studio Code to run and debug locally:
   + [Visual Studio Code](https://code.visualstudio.com/)
