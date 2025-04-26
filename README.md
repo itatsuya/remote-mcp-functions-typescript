@@ -348,5 +348,5 @@ Note that the `host.json` file also includes a reference to the experimental bun
 - Add [API Management]() to your MCP server
 - Add [EasyAuth]() to your MCP server
 - Enable VNET using VNET_ENABLED=true flag
-- Learn more about [related MCP efforts from Microsoft]()
+- Learn more about [related MCP efforts from Microsoft](https://github.com/microsoft/mcp)
 
