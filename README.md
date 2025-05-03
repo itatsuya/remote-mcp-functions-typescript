@@ -345,8 +345,8 @@ Note that the `host.json` file also includes a reference to the experimental bun
 
 ## Next Steps
 
-- Add [API Management]() to your MCP server
-- Add [EasyAuth]() to your MCP server
+- Add [API Management](https://aka.ms/mcp-remote-apim-auth) to your MCP server (auth, gateway, policies, more!)
+- Add [built-in auth](https://learn.microsoft.com/en-us/azure/app-service/overview-authentication-authorization) to your MCP server
 - Enable VNET using VNET_ENABLED=true flag
-- Learn more about [related MCP efforts from Microsoft]()
+- Learn more about [related MCP efforts from Microsoft](https://github.com/microsoft/mcp/tree/main/Resources)
 
