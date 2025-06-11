@@ -56,7 +56,7 @@ app.mcpTool("mcpToolTriggerWithZod", {
   description: "Mcp Tool with Zod Validation Example",
   toolProperties: {
     latitude: z.number().describe("Latitude of the location"),
-    longitude: z.array(z.string()).describe("Longitude of the location"),
+    longitude: z.string().describe("Longitude of the location"),
   },
   handler: mcpToolTriggerWithZod,
 });
