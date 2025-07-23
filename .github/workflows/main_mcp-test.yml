@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: './dist'  # <-- デプロイ対象を dist に
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'  # <-- デプロイ対象を dist に
   NODE_VERSION: '18'  # MCP SDK は Node 22 より 18 のほうが安定する場合あり
 
 jobs:
