@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'  # <-- デプロイ対象を dist に
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './package'
   NODE_VERSION: '18'  # MCP SDK は Node 22 より 18 のほうが安定する場合あり
 
 jobs:
@@ -31,7 +31,9 @@ jobs:
           npm run build
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip dist/
+        run: |
+         cd dist
+         zip -r ../release.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -53,7 +55,7 @@ jobs:
           name: node-app
 
       - name: Unzip artifact for deployment
-        run: unzip release.zip
+        run: unzip release.zip -d package
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -67,4 +69,4 @@ jobs:
         with:
           app-name: 'mcp-test'
           slot-name: 'Production'
-          package: './dist'  # <-- 必ず dist を明示
+          package: './package'
