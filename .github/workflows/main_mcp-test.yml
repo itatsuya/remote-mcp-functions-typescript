@@ -29,6 +29,9 @@ jobs:
         run: |
           npm ci
           npm run build
+          
+      - name: Copy host.json to dist
+        run: cp host.json dist/
 
       - name: Zip artifact for deployment
         run: |
